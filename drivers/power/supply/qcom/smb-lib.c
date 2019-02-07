@@ -893,8 +893,6 @@ static int smblib_get_pulse_cnt(struct smb_charger *chg, int *count)
 #define USBIN_150MA	150000
 #define USBIN_500MA	500000
 #define USBIN_900MA	900000
-#define USBIN_1800MA    1800000
-#define USBIN_2900MA    2900000
 
 static int set_sdp_current(struct smb_charger *chg, int icl_ua)
 {
@@ -903,9 +901,9 @@ static int set_sdp_current(struct smb_charger *chg, int icl_ua)
 	const struct apsd_result *apsd_result = smblib_get_apsd_result(chg);
 
 #ifdef CONFIG_FORCE_FAST_CHARGE
-	if (force_fast_charge > 0 && icl_ua == USBIN_1800MA)
+	if (force_fast_charge > 0 && icl_ua == USBIN_500MA)
 	{
-		icl_ua = USBIN_2900MA;
+		icl_ua = USBIN_900MA;
 	}
 #endif
 
@@ -2691,10 +2689,10 @@ int smblib_get_prop_die_health(struct smb_charger *chg,
 
 #define SDP_CURRENT_UA			500000
 #define CDP_CURRENT_UA			1500000
-#define DCP_CURRENT_UA			2500000
-#define HVDCP2_CURRENT_UA		2900000
+#define DCP_CURRENT_UA			2000000
+#define HVDCP2_CURRENT_UA		1500000
 #if defined(CONFIG_KERNEL_CUSTOM_E7S)
-#define HVDCP_CURRENT_UA		2900000
+#define HVDCP_CURRENT_UA		2000000
 #else
 #define HVDCP_CURRENT_UA		2900000
 #endif
