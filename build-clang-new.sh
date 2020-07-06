@@ -5,7 +5,7 @@
 
 # Clone AnyKernel
 if ! [ -d "$PWD/AnyKernel" ]; then
-    git clone https://github.com/PREDATOR-project/AnyKernel3.git -b Phiton-oldcam-hmp --depth=1 AnyKernel3
+    git clone https://github.com/PREDATOR-project/AnyKernel3.git -b Phiton-newcam --depth=1 whyred
 else
     echo "AnyKernel3 folder is exist, not cloning"
 fi
@@ -13,7 +13,7 @@ fi
 # Main Environment
 KERNEL_DIR=/home/loli/kernel
 IMAGE=/home/loli/kernel/out/arch/arm64/boot/Image.gz-dtb
-ZIP_DIR=/home/loli/kernel/AnyKernel3
+ZIP_DIR=/home/loli/kernel/whyred
 CLANG_DIR=/home/loli/install
 CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
 CORES=$(grep -c ^processor /proc/cpuinfo)
@@ -38,10 +38,10 @@ export LD_LIBRARY_PATH="/home/loli/install/bin/../lib:$PATH"
                finerr
                exit 1
            fi
-   cp out/arch/arm64/boot/Image.gz-dtb AnyKernel3
+   cp out/arch/arm64/boot/Image.gz-dtb whyred
 
 # Compress to zip file
-cd /home/loli/kernel/AnyKernel3
+cd /home/loli/kernel/whyred
 make clean &>/dev/null
 make normal &>/dev/null
 cd ..
