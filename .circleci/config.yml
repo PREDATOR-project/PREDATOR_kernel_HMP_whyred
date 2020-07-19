@@ -12,9 +12,9 @@ jobs:
            cd kernel
            git clone https://github.com/PREDATOR-project/myscripts.git -b master
            chmod +x myscripts/envsetup.sh
-           chmod +x myscripts/asus-hmp.sh
+           chmod +x myscripts/whyred.sh
            source ./myscripts/envsetup.sh
-           ./myscripts/asus-hmp.sh
+           ./myscripts/whyred.sh
 workflows:
   version: 2.1
   cooking:
